@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: $color-white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+    color: $color-gray-dark;
+  }
+
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  &__price {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__installments {
+    font-size: 11px;
+  }
+
+  &__shipping {
+    font-size: 11px;
+    color: $color-blue;
+  }
+
+  &__buy {
+    height: 40px;
+    border: 0;
+    border-radius: 4px;
+    background: $color-blue;
+    color: $color-white;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

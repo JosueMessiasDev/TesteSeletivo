@@ -1,0 +1,85 @@
+@use '../../styles/variables' as *;
+
+.showcase {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 40px 58px;
+
+  &__title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: $color-blue;
+    margin-bottom: 16px;
+  }
+
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 1px solid $color-border;
+    margin-bottom: 24px;
+  }
+
+  &__tab {
+    height: 38px;
+    border: 0;
+    border-right: 1px solid $color-border;
+    background: $color-white;
+    font-size: 12px;
+    color: $color-gray-dark;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    &.is-active {
+      font-weight: 700;
+      color: $color-blue;
+    }
+  }
+
+  &__status {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  &__carousel {
+    position: relative;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    padding: 8px 4px 16px; // espaço para a sombra dos cards
+    margin: 0 -4px;
+  }
+
+  &__track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease;
+    transform: translateX(calc(var(--index) * -1 * (25% + 4px)));
+  }
+
+  &__item {
+    flex: 0 0 calc((100% - 48px) / 4);
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 50%;
+    background: $color-white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%);
+    font-size: 18px;
+
+    &--prev { left: -42px; }
+    &--next { right: -42px; }
+
+    &:disabled { opacity: 0.4; cursor: default; }
+  }
+}
