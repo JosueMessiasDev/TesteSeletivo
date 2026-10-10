@@ -5,6 +5,9 @@ import Banner from './components/Banner/Banner';
 import CategoryNav from './components/CategoryNav/CategoryNav';
 import ProductGrid from './components/ProductGrid/ProductGrid';
 import Partners from './components/Partners/Partners';
+import Brands from './components/Brands/Brands';
+import Newsletter from './components/Newsletter/Newsletter';
+import Footer from './components/Footer/Footer';
 import ProductModal from './components/ProductModal/ProductModal';
 
 export default function App() {
@@ -16,12 +19,28 @@ export default function App() {
       <main>
         <Banner />
         <CategoryNav />
-        <ProductGrid onSelect={setSelected} />
+        <ProductGrid id="produtos" onSelect={setSelected} />
         <Partners />
+        <ProductGrid
+          title="Produtos relacionados"
+          showTabs={false}
+          showSeeAll
+          onSelect={setSelected}
+        />
+        <Partners />
+        <Brands />
+        <ProductGrid
+          title="Produtos relacionados"
+          showTabs={false}
+          showSeeAll
+          onSelect={setSelected}
+        />
+        <Newsletter />
         {selected && (
           <ProductModal product={selected} onClose={() => setSelected(null)} />
         )}
       </main>
+      <Footer />
     </>
   );
 }

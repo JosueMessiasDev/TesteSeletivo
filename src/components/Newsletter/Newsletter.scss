@@ -1,0 +1,101 @@
+@use '../../styles/variables' as *;
+
+.newsletter {
+    background: $color-purple;
+    color: $color-white;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        max-width: $container-width;
+        margin: 0 auto;
+        padding: 48px 58px;
+    }
+
+    &__title {
+        margin: 0 0 8px;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    &__description {
+        max-width: 330px;
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        opacity: 0.85;
+    }
+
+    &__fields {
+        display: flex;
+        gap: 12px;
+
+        input {
+            width: 214px;
+            height: 38px;
+            padding: 0 12px;
+            border: 0;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        button {
+            width: 142px;
+            height: 38px;
+            border: 0;
+            border-radius: 6px;
+            background: $color-yellow;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $color-gray-dark;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(0.95);
+            }
+        }
+    }
+
+    &__terms {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 10px;
+        font-size: 11px;
+
+        input {
+            width: 12px;
+            height: 12px;
+            margin: 0;
+        }
+    }
+
+    &__success {
+        margin: 8px 0 0;
+        font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+        &__inner {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 40px 16px;
+        }
+
+        &__fields {
+            flex-direction: column;
+            width: 100%;
+
+            input,
+            button {
+                width: 100%;
+            }
+        }
+    }
+}

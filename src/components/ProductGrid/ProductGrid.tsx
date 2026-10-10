@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
-import { useEffect, useState } from 'react';
+import { useId, useState } from 'react';
 import type { Product } from '../../types/product';
-import { getProducts } from '../../services/productService';
+import { useProducts } from '../../hooks/useProducts';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductGrid.scss';
 
@@ -10,48 +10,64 @@ const TABS = ['CELULAR', 'ACESSÓRIOS', 'TABLETS', 'NOTEBOOKS', 'TVS', 'VER TODO
 
 interface ProductGridProps {
   onSelect: (product: Product) => void;
+  title?: string;
+  showTabs?: boolean;
+  showSeeAll?: boolean;
+  id?: string;
 }
 
-export default function ProductGrid({ onSelect }: ProductGridProps) {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+export default function ProductGrid({
+  onSelect,
+  title = 'Produtos relacionados',
+  showTabs = true,
+  showSeeAll = false,
+  id,
+}: ProductGridProps) {
+  const titleId = useId();
+  const { products, loading, error } = useProducts();
   const [index, setIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(TABS[0]);
-
-  useEffect(() => {
-    getProducts()
-      .then(setProducts)
-      .catch((err) => {
-        console.error(err);
-        setError(true);
-      })
-      .finally(() => setLoading(false));
-  }, []);
 
   const maxIndex = Math.max(products.length - VISIBLE, 0);
 
   return (
-    <section id="produtos" className="showcase" aria-labelledby="showcase-title">
-      <h2 id="showcase-title" className="showcase__title">
-        Produtos relacionados
+    <section
+      id={id}
+      className={`showcase ${showTabs ? '' : 'showcase--simple'}`}
+      aria-labelledby={titleId}
+    >
+      <h2 id={titleId} className="showcase__title">
+        {title}
       </h2>
 
-      <nav className="showcase__tabs" aria-label="Categorias">
-        {TABS.map((tab) => (
-          <button
-            key={tab}
-            type="button"
-            className={`showcase__tab ${tab === activeTab ? 'is-active' : ''}`}
-            onClick={() => setActiveTab(tab)}
-          >
-            {tab}
-          </button>
-        ))}
-      </nav>
+      {showSeeAll && (
+        <a href="#produtos" className="showcase__see-all">
+          Ver todos
+        </a>
+      )}
+
+      {showTabs && (
+        <nav className="showcase__tabs" aria-label="Categorias de produtos">
+          {TABS.map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              className={`showcase__tab ${tab === activeTab ? 'is-active' : ''}`}
+              onClick={() => setActiveTab(tab)}
+              aria-pressed={tab === activeTab}
+            >
+              {tab}
+            </button>
+          ))}
+        </nav>
+      )}
 
       {loading && <p className="showcase__status">Carregando produtos...</p>}
-      {error && <p className="showcase__status">Não foi possível carregar os produtos.</p>}
+      {error && (
+        <p className="showcase__status" role="alert">
+          Não foi possível carregar os produtos.
+        </p>
+      )}
 
       {!loading && !error && (
         <div className="showcase__carousel">
