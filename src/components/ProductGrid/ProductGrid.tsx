@@ -22,7 +22,10 @@ export default function ProductGrid({ onSelect }: ProductGridProps) {
   useEffect(() => {
     getProducts()
       .then(setProducts)
-      .catch(() => setError(true))
+      .catch((err) => {
+        console.error(err);
+        setError(true);
+      })
       .finally(() => setLoading(false));
   }, []);
 
