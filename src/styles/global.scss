@@ -31,3 +31,8 @@ ul {
 body:has(dialog[open]) {
   overflow: hidden;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

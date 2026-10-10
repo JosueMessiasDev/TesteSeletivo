@@ -1,0 +1,168 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: relative;
+  z-index: 10;
+  background: $color-white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+  &__benefits {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  &__benefits-list,
+  &__main,
+  &__nav ul {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__benefits-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    height: 32px;
+    font-size: 12px;
+    color: $color-gray-medium;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    svg {
+      font-size: 18px;
+    }
+
+    strong {
+      font-weight: 600;
+      color: $color-blue;
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 632px) 1fr;
+    align-items: center;
+    height: 68px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: $color-purple;
+  }
+
+  &__logo-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    margin-right: -8px;
+    border-radius: 50%;
+    background: $color-yellow;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 20px;
+    border-radius: 8px;
+    background: $color-search-bg;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      background: none;
+      font-family: inherit;
+      font-size: 14px;
+      color: $color-gray-dark;
+
+      &::placeholder {
+        color: $color-gray-medium;
+      }
+    }
+
+    button {
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: none;
+      font-size: 24px;
+      color: $color-gray-close;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 28px;
+
+    button {
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-size: 28px;
+      color: $color-gray-close;
+    }
+  }
+
+  &__nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $color-gray-medium;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &.is-active {
+        font-weight: 600;
+        color: $color-blue;
+      }
+    }
+
+    svg {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__benefits {
+      display: none;
+    }
+
+    &__main {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 16px;
+    }
+
+    &__actions {
+      gap: 16px;
+    }
+
+    &__nav ul {
+      justify-content: flex-start;
+      gap: 24px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+}
