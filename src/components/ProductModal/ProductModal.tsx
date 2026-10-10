@@ -18,6 +18,17 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
         if (dialog && !dialog.open) dialog.showModal();
     }, []);
 
+    // Fecha com a tecla Esc
+    useEffect(() => {
+        function handleKeyDown(event: KeyboardEvent) {
+            if (event.key === 'Escape') onClose();
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [onClose]);
+
+    // Fecha ao clicar no fundo escuro (fora da caixa)
     const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
         if (event.target === event.currentTarget) onClose();
     };
@@ -27,6 +38,7 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
             ref={dialogRef}
             className="product-modal"
             aria-labelledby="product-modal-title"
+            onCancel={(event) => event.preventDefault()}
             onClose={onClose}
             onClick={handleBackdropClick}
         >

@@ -19,8 +19,8 @@ Página de e-commerce desenvolvida com **React**, **TypeScript** e **Sass (SCSS)
 
 ```bash
 # 1. clonar o repositório
-git clone <https://github.com/JosueMessiasDev/TesteSeletivo>
-cd <TesteSeletivo>
+git clone https://github.com/JosueMessiasDev/TesteSeletivo
+cd TesteSeletivo
 
 # 2. instalar as dependências
 npm install
