@@ -16,8 +16,8 @@ export default function CategoryNav() {
                             aria-pressed={name === active}
                             onClick={() => setActive(name)}
                         >
-                            <span className="categories__tile" aria-hidden="true">
-                                {icon}
+                            <span className="categories__tile">
+                                <img src={icon} alt="" width={61} height={61} />
                             </span>
                             <span className="categories__label">{name}</span>
                         </button>
