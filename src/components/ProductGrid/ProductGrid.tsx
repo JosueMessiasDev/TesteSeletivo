@@ -32,7 +32,7 @@ export default function ProductGrid({ onSelect }: ProductGridProps) {
   const maxIndex = Math.max(products.length - VISIBLE, 0);
 
   return (
-    <section className="showcase" aria-labelledby="showcase-title">
+    <section id="produtos" className="showcase" aria-labelledby="showcase-title">
       <h2 id="showcase-title" className="showcase__title">
         Produtos relacionados
       </h2>
