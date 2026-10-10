@@ -19,8 +19,8 @@ Página de e-commerce desenvolvida com **React**, **TypeScript** e **Sass (SCSS)
 
 ```bash
 # 1. clonar o repositório
-git clone <URL-DO-SEU-REPOSITORIO>
-cd <NOME-DA-PASTA>
+git clone <https://github.com/JosueMessiasDev/TesteSeletivo>
+cd <TesteSeletivo>
 
 # 2. instalar as dependências
 npm install
@@ -110,7 +110,5 @@ Os produtos são consumidos do JSON fornecido no teste:
 `https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json`
 
 ## Observação sobre o uso de IA
-
-<!-- Mantenha ou apague esta seção conforme o que a empresa permite. Se mantiver, seja fiel ao que realmente aconteceu. -->
 
 Utilizei o Claude (Anthropic) como ferramenta de apoio durante o desenvolvimento, principalmente para revisão, correção de erros e sugestões de organização. Revisei e testei o código e consigo explicar as decisões do projeto.
